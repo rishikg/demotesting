@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+  tools {
+    maven "Jenkins Maven"
+  }
+  stages {
+      stage("build") {
+          steps {
+            echo 'Building...'
+            snDevOpsStep()
+          }
+      }
+      stage("test") {
+           steps {
+             echo 'Testing...'
+             snDevOpsStep()
+           }
+       }
+      stage("deploy") {
+          steps {
+            echo 'Deploying...'
+            snDevOpsStep()
+            snDevOpsChange()
+          }
+      }
+  }
+}
